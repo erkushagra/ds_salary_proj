@@ -23,8 +23,8 @@ def get_jobs(keyword, num_jobs, verbose, path, slp_time):
     #Change the path to where chromedriver is in your home folder.
     driver = webdriver.Chrome(executable_path= path, options=options)
     driver.set_window_size(1120, 1000)
-    url ="https://www.glassdoor.co.in/Job/jobs.htm?sc.generalKeyword="+keyword
-    #url = 'https://www.glassdoor.com/Job/jobs.htm?sc.keyword="' + keyword + '"&locT=C&locId=1147401&locKeyword=San%20Francisco,%20CA&jobType=all&fromAge=-1&minSalary=0&includeNoSalaryJobs=true&radius=100&cityId=-1&minRating=0.0&industryId=-1&sgocId=-1&seniorityType=all&companyId=-1&employerSizes=0&applicationType=0&remoteWorkType=0'
+    #url ="https://www.glassdoor.co.in/Job/jobs.htm?sc.generalKeyword="+keyword
+    url = 'https://www.glassdoor.com/Job/jobs.htm?sc.keyword="' + keyword + '"&locT=C&locId=1147401&locKeyword=San%20Francisco,%20CA&jobType=all&fromAge=-1&minSalary=0&includeNoSalaryJobs=true&radius=100&cityId=-1&minRating=0.0&industryId=-1&sgocId=-1&seniorityType=all&companyId=-1&employerSizes=0&applicationType=0&remoteWorkType=0'
     driver.get(url)
     jobs = []
 
@@ -78,7 +78,7 @@ def get_jobs(keyword, num_jobs, verbose, path, slp_time):
                 salary_estimate = -1 #You need to set a "not found value. It's important."
             
             try:
-                rating = driver.find_element_by_xpath('.//span[@class="rating"]').text
+                rating = driver.find_element_by_xpath('.//span[@class="tab active"]').text
             except NoSuchElementException:
                 rating = -1 #You need to set a "not found value. It's important."
 
